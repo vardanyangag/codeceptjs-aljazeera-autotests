@@ -1,0 +1,40 @@
+# Node modules
+node_modules/
+
+# Output reports
+output/
+allure-report/
+allure-results/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# System files
+.DS_Store
+Thumbs.db
+
+# IDE settings
+.vscode/
+.idea/
+
+# TypeScript
+*.tsbuildinfo
+
+# Coverage (if used in future)
+coverage/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# OS-specific
+*.swp
+*~
+
+# CodeceptJS retries and artifacts
+*.failed.png
+*.trace.json

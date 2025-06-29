@@ -1,0 +1,25 @@
+{
+    "compilerOptions": {
+      "target": "ES6",
+      "module": "commonjs",
+      "strict": true,
+      "esModuleInterop": true,
+      "moduleResolution": "node",
+      "skipLibCheck": true,
+      "types": ["node", "codeceptjs"],
+      "resolveJsonModule": true,
+      "outDir": "dist"
+    },
+    "include": [
+      "types/**/*.d.ts",
+      "pages/**/*.ts",
+      "step_definitions/**/*.ts",
+      "codecept.conf.ts"
+    ],
+    "exclude": [
+      "node_modules",
+      "output",
+      "dist"
+    ]
+  }
+  

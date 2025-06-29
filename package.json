@@ -1,0 +1,26 @@
+{
+    "name": "codeceptjs-aljazeera-tests",
+    "version": "1.0.0",
+    "scripts": {
+        "test": "codeceptjs run --plugins allure",
+        "bdd": "ts-node --esm ./node_modules/.bin/codeceptjs run --features",
+        "allure:report": "allure generate output --clean && allure open"
+    },
+    "dependencies": {
+        "@codeceptjs/configure": "^0.3.0",
+        "codeceptjs": "^3.7.3",
+        "webdriverio": "^9.16.2"
+    },
+    "devDependencies": {
+        "@codeceptjs/allure-legacy": "^1.0.2",
+        "@types/node": "^20.19.2",
+        "allure-commandline": "^2.34.1",
+        "ts-node": "^10.9.2",
+        "typescript": "^5.8.3"
+    },
+    "main": "index.js",
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "description": ""
+}
