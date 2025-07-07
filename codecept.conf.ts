@@ -2,10 +2,11 @@
 
 import { setHeadlessWhen } from '@codeceptjs/configure';
 
+// Enable headless mode when HEADLESS=true is passed in env
 setHeadlessWhen(process.env.HEADLESS === 'true');
 
 export const config: CodeceptJS.MainConfig = {
-  tests: './step_definitions/**/*.ts',
+  tests: './step_definitions/**/*.js',
   output: './output',
   helpers: {
     WebDriver: {
@@ -21,14 +22,15 @@ export const config: CodeceptJS.MainConfig = {
     }
   },
   include: {
-    AljazeeraMainPage: './pages/AljazeeraMainPage',
-    AljazeeraLivePage: './pages/AljazeeraLivePage'
+    AljazeeraMainPage: './pages/aljazeera-main.page.js',
+    AljazeeraLivePage: './pages/aljazeera-live.page.js'
   },
   gherkin: {
-    features: './features/*.feature',
+    features: './features/**/*.feature',
     steps: [
-      './step_definitions/aljazeeraMain.steps.ts',
-      './step_definitions/aljazeeraLive.steps.ts'
+      './step_definitions/desktop/aljazeera-main.steps.js',
+      './step_definitions/desktop/aljazeera-live.steps.js',
+      './step_definitions/mobile/aljazeera-main.steps.js'
     ]
   },
   plugins: {

@@ -1,83 +1,112 @@
 # Al Jazeera UI Automation Tests
 
-This project contains automated UI tests for the Al Jazeera website using CodeceptJS + WebDriver + TypeScript with BDD (Gherkin).
+Automated UI tests for the Al Jazeera website using CodeceptJS, WebDriver, and BDD (Gherkin). This project follows best practices for maintainability, scalability, and reporting.
 
 ---
 
 ## ✅ Features Tested
 
-### A. Al Jazeera Homepage (https://www.aljazeera.com/)
-- ✅ Scenario 1 (Desktop): Ensure "Most Popular" section is visible.
-- ✅ Scenario 2 (Desktop): Validate it contains exactly 10 posts.
-- ✅ Scenario 3 (Mobile): Ensure the section is not visible on mobile view.
-- ✅ Scenario 4 (Desktop - Accessibility): 
-  - Clicking whitespace → press Tab → press Enter on “Skip to Most Read”
-  - Ensure `/#most-read-container` is appended to URL.
-
-### B. Al Jazeera Live Page (https://www.aljazeera.com/live)
-- ✅ Scenario 1: Validate Livestream Player is visible.
-- ✅ Scenario 2: Validate “Switch Player” button is visible.
+- **Homepage (Desktop & Mobile):**
+  - Most Popular section visibility and count
+  - Responsive/mobile behavior
+  - Accessibility: Bypass block/skip links
+- **Live Page (Desktop):**
+  - Livestream player visibility
+  - Switch Player button
 
 ---
 
-## 🧰 Tech Stack
+## 🗂️ Project Structure
 
-- [x] CodeceptJS + WebDriver
-- [x] BDD with Gherkin `.feature` files
-- [x] Page Object Model
-- [x] TypeScript + ts-node
-- [x] Allure Reporting
+See [`PROJECT_STRUCTURE.md`](./PROJECT_STRUCTURE.md) for a full breakdown.
+
+```
+├── features/                # Gherkin feature files (desktop/mobile)
+├── pages/                  # Page Object Models
+├── step_definitions/       # BDD Step definitions (desktop/mobile)
+├── types/                  # TypeScript declarations
+├── output/                 # Test artifacts + screenshots
+├── scripts/                # Helper scripts (e.g., run-tests.sh)
+├── codecept.conf.ts        # Main config
+├── README.md               # This file
+└── ...
+```
 
 ---
 
 ## 🚀 Getting Started
 
-### 📦 1. Install Dependencies
+### 1. Install Dependencies
 ```bash
 npm install
 ```
 
-### 🧪 2. Run Tests (BDD)
+### 2. Run All Tests (BDD)
 ```bash
 npx ts-node --esm ./node_modules/.bin/codeceptjs run --features
 ```
 
-Or if you're using `npm run`:
+Or use the helper script:
 ```bash
-npm run bdd
+./scripts/run-tests.sh           # All tests
+./scripts/run-tests.sh @desktop  # Only desktop tests
+./scripts/run-tests.sh @mobile   # Only mobile tests
+./scripts/run-tests.sh @smoke    # Only smoke tests
 ```
 
-To run in **headless mode**:
+### 3. Run in Headless Mode
 ```bash
 HEADLESS=true npm run bdd
 ```
 
 ---
 
-## 📊 Generate Allure Report
+## 📊 Allure Reporting
 
-After test execution:
+After running tests, generate and view the Allure report:
 ```bash
 npm run allure:report
 ```
+Or:
+```bash
+npx allure generate output --clean && npx allure open
+```
 
-This will open a rich HTML report in your browser.
+- Allure results are saved in the `output/` directory.
+- See rich HTML reports with test history, screenshots, and steps.
 
 ---
 
-## 🗂️ Project Structure
+## 🏷️ BDD Tagging & Filtering
 
+- Tag scenarios and features for flexible test selection (see [`BDD_TAGGING_STRATEGY.md`](./BDD_TAGGING_STRATEGY.md)).
+- Example tags: `@desktop`, `@mobile`, `@smoke`, `@regression`, `@ui`, `@main-page`, `@live-page`, `@critical`, etc.
+
+**Run only smoke tests:**
+```bash
+./scripts/run-tests.sh @smoke
 ```
-.
-├── features/                # Gherkin feature files
-├── pages/                  # Page Object Models
-├── step_definitions/       # BDD Step definitions
-├── types/                  # Custom TypeScript declarations
-├── output/                 # Test artifacts + screenshots
-├── codecept.conf.ts        # Main config
-├── tsconfig.json
-├── README.md
-└── package.json
+
+**Run only desktop regression tests:**
+```bash
+./scripts/run-tests.sh "@desktop.*@regression"
 ```
+
+---
+
+## 📚 Documentation
+
+- [`PROJECT_STRUCTURE.md`](./PROJECT_STRUCTURE.md): Directory and naming conventions
+- [`BDD_TAGGING_STRATEGY.md`](./BDD_TAGGING_STRATEGY.md): Tagging and filtering
+- [`REFACTORING_SUMMARY.md`](./REFACTORING_SUMMARY.md): Refactoring and best practices
+
+---
+
+## 🧰 Tech Stack
+- CodeceptJS + WebDriver
+- BDD (Gherkin)
+- Page Object Model
+- TypeScript
+- Allure Reporting
 
 ---

@@ -1,12 +1,18 @@
 /// <reference types="codeceptjs" />
 
-type CustomSteps = typeof import('../pages/AljazeeraMainPage');
-type CustomLiveSteps = typeof import('../pages/AljazeeraLivePage');
-
 declare namespace CodeceptJS {
   interface SupportObject {
     I: I;
-    AljazeeraMainPage: CustomSteps;
-    AljazeeraLivePage: CustomLiveSteps;
+    current: any;
+    AljazeeraMainPage: typeof import('../pages/AljazeeraMainPage');
+    AljazeeraLivePage: typeof import('../pages/AljazeeraLivePage');
+  }
+
+  interface Methods extends WebDriver {}
+
+  interface I extends WithTranslation<Methods> {}
+
+  namespace Translation {
+    interface Actions {}
   }
 }

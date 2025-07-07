@@ -9,6 +9,7 @@
     "dependencies": {
         "@codeceptjs/configure": "^0.3.0",
         "codeceptjs": "^3.7.3",
+        "codeceptjs-aljazeera-tests": "file:",
         "webdriverio": "^9.16.2"
     },
     "devDependencies": {
